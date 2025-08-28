@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covenant Under Fire - Marriage Crisis Support | Depths to Heights</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #8B4513;
+            --secondary: #CD853F;
+            --accent: #FFD700;
+            --danger: #DC143C;
+            --success: #228B22;
+            --light: #FFF8DC;
+            --dark: #2F1B14;
+            --text: #3D2817;
+            --shadow: rgba(139, 69, 19, 0.1);
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #FFF8DC 0%, #F5DEB3 100%);
+            color: var(--text);
+            min-height: 100vh;
+            padding-top: 60px;
+            padding-bottom: 70px;
+            line-height: 1.6;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 15programming
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .top-nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .app-title {
+            font-size: 24px;
+            color: var(--light);
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .audio-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 248, 220, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .audio-control button {
+            background: var(--accent);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+
+        .audio-control button:hover {
+            background: #FFE55C;
+            transform: scale(1.05);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px var(--shadow);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--light);
+            text-decoration: none;
+            flex: 1;
+            user-select: none;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--accent);
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .nav-label {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(205, 133, 63, 0.9)),
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23FFF8DC" width="1200" height="600"/><path fill="%23FFD700" opacity="0.1" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
+            padding: 40px 30px;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .verse-banner {
+            background: rgba(255, 215, 0, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .verse-banner cite {
+            display: block;
+            text-align: right;
+            margin-top: 10px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+            margin-bottom: 20px;
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin: 20px 0 10px;
+            font-size: 20px;
+        }
+
+        /* Forms */
+        .assessment-form {
+            background: linear-gradient(135deg, white, var(--light));
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #E5D4B1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(205, 133, 63, 0.1);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            border: 2px solid #E5D4B1;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .radio-item:hover {
+            background: var(--light);
+            border-color: var(--secondary);
+        }
+
+        .radio-item input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .radio-item input[type="radio"]:checked + label {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger), #FF6B6B);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #32CD32);
+        }
+
+        /* Crisis Section */
+        .crisis-banner {
+            background: linear-gradient(135deg, var(--danger), #FF6B6B);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(220, 20, 60, 0.3);
+        }
+
+        .crisis-banner h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .crisis-resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .crisis-card {
+            background: white;
+            color: var(--text);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px var(--shadow);
+        }
+
+        .crisis-card h4 {
+            color: var(--danger);
+            margin-bottom: 10px;
+        }
+
+        /* Prayer Wall */
+        .prayer-wall {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 248, 220, 0.3));
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .prayer-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .prayer-item .date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        /* Progress Tracker */
+        .progress-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+        }
+
+        .progress-bar {
+            background: #E5D4B1;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--success), #32CD32);
+            height: 100%;
+            width: 0%;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--danger);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .crisis-resources {
+                grid-template-columns: 1fr;
+            }
+
+            .top-nav-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .app-title {
+                font-size: 20px;
+            }
+        }
+
+        /* Message Display */
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            animation: slideIn 0.5s;
+        }
+
+        .message.success {
+            background: rgba(34, 139, 34, 0.1);
+            border: 2px solid var(--success);
+            color: var(--success);
+        }
+
+        .message.warning {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid var(--accent);
+            color: var(--text);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), white);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 4px solid var(--accent);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            text-align: right;
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* Resource Grid */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .resource-card h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .resource-card .icon {
+            font-size: 40px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <div class="top-nav-content">
+            <div class="app-title">⛪ Covenant Under Fire</div>
+            <div class="audio-control">
+                <span style="color: var(--light);">🎵 Worship Music</span>
+                <button id="audioToggle" onclick="showMusicInstructions()">Setup Music 🎵</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Section -->
+    <div id="home" class="section active">
+        <div class="hero">
+            <h1>Covenant Under Fire</h1>
+            <p>A Safe Haven for Marriages in Crisis</p>
+            <div class="verse-banner">
+                <p>"And though a man might prevail against one who is alone, two will withstand him—a threefold cord is not quickly broken."</p>
+                <cite>- Ecclesiastes 4:12 ESV</cite>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🤝 Welcome to Your Journey of Restoration</h2>
+            <p>Dear beloved couple, if you've found your way here, you're likely walking through one of the most challenging seasons of your marriage. Please know that you are not alone, you are not beyond hope, and your marriage is worth fighting for.</p>
+            
+            <p style="margin-top: 15px;">This ministry exists to provide a safe, confidential space where you can find biblical wisdom, practical tools, and the grace-filled support you need to navigate this crisis. Whether you're dealing with communication breakdown, trust issues, infidelity, or considering separation, God's healing power is available for your marriage.</p>
+
+            <div class="message warning" style="margin-top: 20px;">
+                <strong>A Word of Grace:</strong> Coming here doesn't mean your marriage has failed. It means you're brave enough to fight for it. Every marriage faces seasons of testing, and seeking help is a sign of wisdom, not weakness.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📊 Quick Marriage Health Check</h2>
+            <div class="assessment-form">
+                <div class="form-group">
+                    <label>How would you describe your current marriage state?</label>
+                    <select id="marriageState" onchange="saveAssessment()">
+                        <option value="">Select one...</option>
+                        <option value="struggling">Struggling but committed</option>
+                        <option value="crisis">In active crisis</option>
+                        <option value="separated">Currently separated</option>
+                        <option value="rebuilding">Rebuilding after crisis</option>
+                        <option value="preventive">Seeking preventive help</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>What is your primary struggle?</label>
+                    <select id="primaryStruggle" onchange="saveAssessment()">
+                        <option value="">Select one...</option>
+                        <option value="communication">Communication breakdown</option>
+                        <option value="trust">Trust/Betrayal issues</option>
+                        <option value="intimacy">Emotional/Physical intimacy</option>
+                        <option value="conflict">Constant conflict</option>
+                        <option value="addiction">Addiction impact</option>
+                        <option value="infidelity">Infidelity recovery</option>
+                        <option value="finances">Financial stress</option>
+                        <option value="parenting">Parenting disagreements</option>
+                        <option value="spiritual">Spiritual disconnect</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>How long have you been married?</label>
+                    <input type="text" id="marriageLength" placeholder="e.g., 5 years" onchange="saveAssessment()">
+                </div>
+
+                <div class="form-group">
+                    <label>Are both spouses willing to work on the marriage?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="both-yes" name="willingness" value="both" onchange="saveAssessment()">
+                            <label for="both-yes">Both willing</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="one-yes" name="willingness" value="one" onchange="saveAssessment()">
+                            <label for="one-yes">Only one willing</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="unsure" name="willingness" value="unsure" onchange="saveAssessment()">
+                            <label for="unsure">Unsure</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="generatePlan()">Generate Your Restoration Plan</button>
+                <div id="assessmentResult"></div>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <p>"We were on the brink of divorce. Through God's grace and the tools we found here, we're not just surviving—we're thriving. Our marriage is stronger than it's ever been."</p>
+            <div class="testimonial-author">- Sarah & Michael, Married 12 years</div>
+        </div>
+    </div>
+
+    <!-- Tools Section -->
+    <div id="tools" class="section">
+        <div class="card">
+            <h2>🛠️ Marriage Restoration Toolkit</h2>
+            <p>Practical, biblical tools to rebuild your covenant relationship.</p>
+        </div>
+
+        <div class="resource-grid">
+            <div class="resource-card" onclick="openTool('communication')">
+                <div class="icon">💬</div>
+                <h4>Communication Restoration</h4>
+                <p>Learn to hear and be heard again with biblical communication principles.</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Active listening exercises</li>
+                    <li>Conflict resolution strategies</li>
+                    <li>"Fair fighting" rules</li>
+                    <li>Daily connection rituals</li>
+                </ul>
+            </div>
+
+            <div class="resource-card" onclick="openTool('trust')">
+                <div class="icon">🔐</div>
+                <h4>Trust Rebuilding Program</h4>
+                <p>A step-by-step journey to restore broken trust.</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Transparency protocols</li>
+                    <li>Accountability structures</li>
+                    <li>Forgiveness pathway</li>
+                    <li>Healing timelines</li>
+                </ul>
+            </div>
+
+            <div class="resource-card" onclick="openTool('intimacy')">
+                <div class="icon">❤️</div>
+                <h4>Intimacy Recovery</h4>
+                <p>Reconnect emotionally, spiritually, and physically.</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Emotional intimacy exercises</li>
+                    <li>Spiritual bonding activities</li>
+                    <li>Physical affection rebuilding</li>
+                    <li>Date night ideas</li>
+                </ul>
+            </div>
+
+            <div class="resource-card" onclick="openTool('infidelity')">
+                <div class="icon">💔</div>
+                <h4>After the Affair</h4>
+                <p>Hope and healing after infidelity.</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Initial crisis management</li>
+                    <li>Disclosure guidelines</li>
+                    <li>Recovery roadmap</li>
+                    <li>Rebuilding new marriage</li>
+                </ul>
+            </div>
+
+            <div class="resource-card" onclick="openTool('prayer')">
+                <div class="icon">🙏</div>
+                <h4>Prayer & Spiritual Warfare</h4>
+                <p>Fight for your marriage in the spiritual realm.</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Warfare prayers for marriage</li>
+                    <li>Scripture declarations</li>
+                    <li>Fasting guidelines</li>
+                    <li>Couple devotionals</li>
+                </ul>
+            </div>
+
+            <div class="resource-card" onclick="openTool('separation')">
+                <div class="icon">🌉</div>
+                <h4>Therapeutic Separation Guide</h4>
+                <p>When space is needed for healing.</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Healthy separation guidelines</li>
+                    <li>Communication during separation</li>
+                    <li>Working toward reconciliation</li>
+                    <li>Children considerations</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 30px;">
+            <h2>📅 21-Day Marriage Revival Challenge</h2>
+            <div class="progress-container">
+                <h3>Your Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="challengeProgress">0%</div>
+                </div>
+                <div id="dailyChallenge"></div>
+                <button class="btn btn-success" onclick="startChallenge()">Start 21-Day Challenge</button>
+            </div>
+        </div>
+
+        <div class="prayer-wall">
+            <h2>🙏 Prayer Wall for Marriages</h2>
+            <div class="form-group">
+                <textarea id="prayerRequest" placeholder="Share your prayer request (anonymous)..." rows="3"></textarea>
+                <button class="btn" onclick="submitPrayer()" style="margin-top: 10px;">Submit Prayer</button>
+            </div>
+            <div id="prayerList"></div>
+        </div>
+    </div>
+
+    <!-- Journey Section -->
+    <div id="journey" class="section">
+        <div class="card">
+            <h2>🗺️ Your Restoration Journey</h2>
+            <p>Every marriage crisis follows a pattern. Understanding where you are helps you know what steps to take next.</p>
+        </div>
+
+        <div class="card">
+            <h3>Stage 1: Crisis Recognition 😰</h3>
+            <p><strong>What it looks like:</strong> The moment you realize your marriage is in serious trouble. This might come through a betrayal discovery, a separation threat, or reaching a breaking point.</p>
+            
+            <p><strong>Common feelings:</strong> Shock, denial, anger, fear, desperation, confusion</p>
+            
+            <p><strong>Biblical truth:</strong> "The Lord is near to the brokenhearted and saves the crushed in spirit." - Psalm 34:18</p>
+            
+            <p><strong>Your action steps:</strong></p>
+            <ul style="padding-left: 20px; margin-top: 10px;">
+                <li>Don't make major decisions in the first 30 days</li>
+                <li>Seek immediate pastoral or professional help</li>
+                <li>Establish safety if there's abuse</li>
+                <li>Begin individual prayer and surrender</li>
+                <li>Avoid discussing with everyone - choose 2-3 trusted advisors</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Stage 2: Decision Point ⚖️</h3>
+            <p><strong>What it looks like:</strong> After the initial shock, you must decide whether to fight for the marriage or give up.</p>
+            
+            <p><strong>Common feelings:</strong> Ambivalence, exhaustion, hope mixed with despair</p>
+            
+            <p><strong>Biblical truth:</strong> "I call heaven and earth to witness against you today, that I have set before you life and death... Choose life." - Deuteronomy 30:19</p>
+            
+            <p><strong>Your action steps:</strong></p>
+            <ul style="padding-left: 20px; margin-top: 10px;">
+                <li>Take a marriage inventory - what's worth saving?</li>
+                <li>Consider your covenant vows before God</li>
+                <li>Think about your children's future</li>
+                <li>Get professional assessment of viability</li>
+                <li>Make a commitment to try for specific timeframe</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Stage 3: The Hard Work 💪</h3>
+            <p><strong>What it looks like:</strong> Rolling up your sleeves and doing the difficult work of change, forgiveness, and rebuilding.</p>
+            
+            <p><strong>Common feelings:</strong> Resistance, frustration, small victories, setbacks</p>
+            
+            <p><strong>Biblical truth:</strong> "Let us not grow weary of doing good, for in due season we will reap, if we do not give up." - Galatians 6:9</p>
+            
+            <p><strong>Your action steps:</strong></p>
+            <ul style="padding-left: 20px; margin-top: 10px;">
+                <li>Commit to weekly counseling</li>
+                <li>Do your individual work (own your part)</li>
+                <li>Practice new communication skills daily</li>
+                <li>Rebuild trust through consistency</li>
+                <li>Celebrate small wins</li>
+                <li>Expect setbacks - they're normal</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Stage 4: Breakthrough 🌅</h3>
+            <p><strong>What it looks like:</strong> A turning point where hope becomes stronger than fear, and you see real change happening.</p>
+            
+            <p><strong>Common feelings:</strong> Cautious optimism, genuine connection returning, deeper understanding</p>
+            
+            <p><strong>Biblical truth:</strong> "Behold, I am doing a new thing; now it springs forth, do you not perceive it?" - Isaiah 43:19</p>
+            
+            <p><strong>Your action steps:</strong></p>
+            <ul style="padding-left: 20px; margin-top: 10px;">
+                <li>Don't stop the work that's working</li>
+                <li>Begin dreaming together again</li>
+                <li>Create new positive memories</li>
+                <li>Address deeper issues that surface</li>
+                <li>Start serving others together</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Stage 5: New Marriage 💑</h3>
+            <p><strong>What it looks like:</strong> Not returning to the old marriage, but creating something new and better.</p>
+            
+            <p><strong>Common feelings:</strong> Deep gratitude, genuine love, stronger bond, ministry calling</p>
+            
+            <p><strong>Biblical truth:</strong> "Therefore, if anyone is in Christ, he is a new creation. The old has passed away; behold, the new has come." - 2 Corinthians 5:17</p>
+            
+            <p><strong>Your action steps:</strong></p>
+            <ul style="padding-left: 20px; margin-top: 10px;">
+                <li>Continue maintenance work</li>
+                <li>Share your story to help others</li>
+                <li>Establish new traditions</li>
+                <li>Keep God at the center</li>
+                <li>Never forget where you came from</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📝 Your Personal Journey Tracker</h2>
+            <div class="form-group">
+                <label>What stage are you in?</label>
+                <select id="journeyStage" onchange="updateJourney()">
+                    <option value="">Select your stage...</option>
+                    <option value="1">Stage 1: Crisis Recognition</option>
+                    <option value="2">Stage 2: Decision Point</option>
+                    <option value="3">Stage 3: The Hard Work</option>
+                    <option value="4">Stage 4: Breakthrough</option>
+                    <option value="5">Stage 5: New Marriage</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Journal Entry for Today:</label>
+                <textarea id="journeyJournal" rows="5" placeholder="What is God showing you today about your marriage?" onchange="saveJournal()"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>One action I'll take this week:</label>
+                <input type="text" id="weeklyAction" placeholder="e.g., Have one honest conversation with my spouse" onchange="saveJournal()">
+            </div>
+            
+            <button class="btn" onclick="saveJournal()">Save Journey Entry</button>
+            <div id="journeyHistory"></div>
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <div id="info" class="section">
+        <div class="crisis-banner">
+            <h2>🚨 Crisis Support & Emergency Resources</h2>
+            <p>If you're in immediate danger or crisis, please reach out for help immediately.</p>
+        </div>
+
+        <div class="crisis-resources">
+            <div class="crisis-card">
+                <h4>🌍 International Crisis Lines</h4>
+                <p><strong>USA:</strong> National Domestic Violence Hotline<br>1-800-799-7233</p>
+                <p><strong>UK:</strong> National Domestic Abuse Helpline<br>0808 2000 247</p>
+                <p><strong>Canada:</strong> Talk Suicide Canada<br>1-833-456-4566</p>
+                <p><strong>Australia:</strong> 1800RESPECT<br>1800 737 732</p>
+                <p><strong>International:</strong> Find your country's helpline at findahelpline.com</p>
+            </div>
+
+            <div class="crisis-card">
+                <h4>🏥 When to Seek Immediate Help</h4>
+                <ul style="padding-left: 20px;">
+                    <li>Physical violence or threats</li>
+                    <li>Suicidal thoughts or plans</li>
+                    <li>Child abuse or neglect</li>
+                    <li>Severe mental health crisis</li>
+                    <li>Substance abuse emergency</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Remember:</strong> Your safety and your children's safety come first. God does not require you to stay in danger.</p>
+            </div>
+
+            <div class="crisis-card">
+                <h4>⛪ Christian Marriage Crisis Resources</h4>
+                <p><strong>Focus on the Family:</strong><br>1-855-771-4357 (Ask for counseling department)</p>
+                <p><strong>Hope Restored (Intensive Programs):</strong><br>hoperestore.focusonthefamily.com</p>
+                <p><strong>Christian Counselors:</strong><br>Find at aacc.net</p>
+                <p><strong>Retrouvaille (Marriage Recovery):</strong><br>helpourmarriage.org</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📚 Biblical Foundation for Marriage Restoration</h2>
+            
+            <h3>God's Heart for Marriage</h3>
+            <p>"'For I hate divorce,' says the Lord, the God of Israel... So guard yourselves in your spirit, and do not be faithless." - Malachi 2:16</p>
+            <p>God designed marriage to reflect Christ's relationship with the church (Ephesians 5:25-33). When marriages struggle, God's heart is for restoration, healing, and redemption.</p>
+
+            <h3>The Power of Covenant</h3>
+            <p>"Therefore what God has joined together, let no one separate." - Mark 10:9</p>
+            <p>Marriage is more than a contract—it's a covenant before God. This sacred bond has supernatural staying power when both partners submit to God's design.</p>
+
+            <h3>Hope in Hopeless Situations</h3>
+            <div class="verse-banner" style="margin: 20px 0;">
+                <p>"And we know that for those who love God all things work together for good, for those who are called according to his purpose." - Romans 8:28</p>
+            </div>
+            <p>Even the deepest wounds and betrayals can become testimonies of God's redemptive power. What the enemy meant for destruction, God can use for your good and His glory.</p>
+
+            <h3>The Role of Forgiveness</h3>
+            <p>"Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you." - Ephesians 4:32</p>
+            <p>Forgiveness doesn't mean:</p>
+            <ul style="padding-left: 20px;">
+                <li>Pretending it didn't happen</li>
+                <li>Trusting immediately</li>
+                <li>Removing consequences</li>
+                <li>Staying in danger</li>
+            </ul>
+            <p style="margin-top: 10px;">Forgiveness DOES mean:</p>
+            <ul style="padding-left: 20px;">
+                <li>Releasing the right to revenge</li>
+                <li>Choosing healing over bitterness</li>
+                <li>Opening the door to reconciliation</li>
+                <li>Trusting God with justice</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>📖 Recommended Resources</h2>
+            
+            <h3>Essential Books</h3>
+            <ul style="padding-left: 20px;">
+                <li><strong>"The Seven Principles for Making Marriage Work"</strong> - John Gottman</li>
+                <li><strong>"Love & Respect"</strong> - Emerson Eggerichs</li>
+                <li><strong>"Boundaries in Marriage"</strong> - Henry Cloud & John Townsend</li>
+                <li><strong>"The Meaning of Marriage"</strong> - Timothy Keller</li>
+                <li><strong>"Hold Me Tight"</strong> - Sue Johnson</li>
+                <li><strong>"After the Affair"</strong> - Janis Spring</li>
+                <li><strong>"Every Man's Battle" / "Every Woman's Battle"</strong> - Stephen Arterburn</li>
+            </ul>
+
+            <h3>Online Programs</h3>
+            <ul style="padding-left: 20px;">
+                <li><strong>Re|engage:</strong> Free marriage enrichment program (reengage.org)</li>
+                <li><strong>Marriage Helper:</strong> Online workshops and coaching</li>
+                <li><strong>Affair Recovery:</strong> Specialized infidelity recovery</li>
+                <li><strong>Prepare/Enrich:</strong> Assessment and growth tools</li>
+            </ul>
+
+            <h3>When Professional Help is Needed</h3>
+            <p>Consider professional counseling when:</p>
+            <ul style="padding-left: 20px;">
+                <li>Communication always ends in fights</li>
+                <li>There's been infidelity or betrayal</li>
+                <li>You're considering separation or divorce</li>
+                <li>There's addiction involved</li>
+                <li>You feel stuck after trying on your own</li>
+                <li>There's any form of abuse</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🌟 Success Stories & Testimonies</h2>
+            
+            <div class="testimonial">
+                <p>"After my affair, I thought our marriage was over. My wife had every right to leave. But through counseling, prayer, and this program's tools, we rebuilt from the ground up. Three years later, we're helping other couples in crisis. God truly makes beauty from ashes."</p>
+                <div class="testimonial-author">- Mark, restored after infidelity</div>
+            </div>
+
+            <div class="testimonial">
+                <p>"We were separated for 6 months. Divorce papers were filed. But God... Through therapeutic separation guidelines and individual healing, we learned to become the people we needed to be. We remarried each other last year—same people, brand new marriage."</p>
+                <div class="testimonial-author">- Jennifer & Robert, remarried after divorce</div>
+            </div>
+
+            <div class="testimonial">
+                <p>"Twenty years of marriage, but we were roommates at best. No fighting, just no connection. The intimacy recovery tools helped us find each other again. We're dating like teenagers and praying together daily. It's never too late!"</p>
+                <div class="testimonial-author">- David & Linda, reconnected after decades</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="section">
+        <div class="card">
+            <h2>✨ About Depths to Heights Ministry</h2>
+            <p><strong>Our Mission:</strong> To bring hope, healing, and practical biblical support to those in their deepest valleys, guiding them to the heights of God's purpose for their lives.</p>
+            
+            <p style="margin-top: 15px;"><strong>Created by:</strong> Justin, a missionary pastor who understands that ministry doesn't exempt us from life's struggles. Having walked with countless couples through crisis, we've developed these resources to be available 24/7 for those who need support.</p>
+
+            <div class="message success" style="margin-top: 20px;">
+                <strong>Our Heart:</strong> Every marriage that makes it through crisis becomes a lighthouse for others in the storm. Your pain has purpose. Your story isn't over. God is still writing.
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🤝 How to Support This Ministry</h2>
+            <p>This resource is provided free of charge because we believe financial strain shouldn't prevent anyone from getting marriage help. If you've been blessed by this ministry, consider:</p>
+            
+            <ul style="padding-left: 20px; margin-top: 15px;">
+                <li><strong>Praying:</strong> Lift up couples in crisis daily</li>
+                <li><strong>Sharing:</strong> Tell others who might need these resources</li>
+                <li><strong>Supporting:</strong> Help us keep this ministry free for all</li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://www.paypal.com/donate/?hosted_button_id=8GRE7B8C3TP2U" target="_blank" class="btn">Support This Ministry 💝</a>
+            </div>
+            
+            <p style="margin-top: 20px; text-align: center;">
+                <strong>Website:</strong> <a href="https://depthstoheights.org" target="_blank">depthstoheights.org</a><br>
+                <strong>Email:</strong> depthstoheights@gmail.com
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>📊 Ministry Impact</h2>
+            <div class="progress-container">
+                <p>Through God's grace and your support, this ministry has:</p>
+                <ul style="padding-left: 20px; margin: 15px 0;">
+                    <li>Served couples in over 50 countries</li>
+                    <li>Provided crisis intervention resources 24/7</li>
+                    <li>Offered hope when hope seemed lost</li>
+                    <li>Seen countless marriages restored</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🙏 Our Prayer for Your Marriage</h2>
+            <div class="prayer-wall" style="background: white; padding: 20px; border-radius: 10px;">
+                <p style="font-style: italic; line-height: 1.8;">
+                    "Heavenly Father, we lift up this precious couple before Your throne of grace. Lord, You hate divorce and love redemption. We ask for Your supernatural intervention in this marriage.
+                </p>
+                <p style="font-style: italic; line-height: 1.8; margin-top: 15px;">
+                    Break down walls of hurt and bitterness. Soften hardened hearts. Bring conviction where there's sin, healing where there's wound, and hope where there's despair.
+                </p>
+                <p style="font-style: italic; line-height: 1.8; margin-top: 15px;">
+                    Give them strength for one more day, wisdom for the next step, and faith to believe You can do immeasurably more than they can ask or imagine.
+                </p>
+                <p style="font-style: italic; line-height: 1.8; margin-top: 15px;">
+                    May their marriage become a testimony of Your redemptive power, bringing glory to Your name and hope to other couples in crisis.
+                </p>
+                <p style="font-style: italic; line-height: 1.8; margin-top: 15px;">
+                    In Jesus' mighty name, Amen."
+                </p>
+            </div>
+        </div>
+
+        <div class="message warning">
+            <h3>⚖️ Important Disclaimers</h3>
+            <ul style="padding-left: 20px;">
+                <li>This app is not a substitute for professional counseling or therapy</li>
+                <li>In cases of abuse, your safety must come first</li>
+                <li>Reconciliation requires both parties' willingness</li>
+                <li>God's grace covers divorce when biblical grounds exist</li>
+                <li>Your worth is not determined by your marriage status</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="showSection('home', event)">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-label">Home</div>
+        </div>
+        <div class="nav-item" onclick="showSection('tools', event)">
+            <div class="nav-icon">🛠️</div>
+            <div class="nav-label">Tools</div>
+        </div>
+        <div class="nav-item" onclick="showSection('journey', event)">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-label">Journey</div>
+        </div>
+        <div class="nav-item" onclick="showSection('info', event)">
+            <div class="nav-icon">📚</div>
+            <div class="nav-label">Info</div>
+        </div>
+        <div class="nav-item" onclick="showSection('about', event)">
+            <div class="nav-icon">✨</div>
+            <div class="nav-label">About</div>
+        </div>
+    </div>
+
+    <!-- Modal for Tools -->
+    <div id="toolModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedData();
+            loadPrayers();
+            loadJourneyHistory();
+            updateDateTime();
+            setInterval(updateDateTime, 60000);
+        });
+
+        // Navigation
+        function showSection(sectionId, event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // Find and activate the clicked nav item
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+            
+            window.scrollTo(0, 0);
+        }
+
+        // Audio Control - Opens worship music in new tabs
+        function showMusicInstructions() {
+            const modal = document.getElementById('toolModal');
+            const content = document.getElementById('modalContent');
+            
+            content.innerHTML = `
+                <h2>🎵 Worship Music for Your Journey</h2>
+                <p>Music can be a powerful tool for healing and prayer. Click any option below to open worship music in a new tab:</p>
+                
+                <h3>📻 Instant Worship Music (Click to Open)</h3>
+                <div style="display: grid; gap: 10px; margin: 20px 0;">
+                    <button class="btn" onclick="window.open('https://www.youtube.com/watch?v=Sc6SSHuZvQE', '_blank'); closeModal();">
+                        🎹 Hillsong Instrumental Worship (2 Hours)
+                    </button>
+                    <button class="btn" onclick="window.open('https://www.youtube.com/watch?v=QvLxZEU02uI', '_blank'); closeModal();">
+                        🙏 3 Hours Prayer & Meditation Music
+                    </button>
+                    <button class="btn" onclick="window.open('https://www.youtube.com/watch?v=kqvTqWmOjS0', '_blank'); closeModal();">
+                        🎵 Peaceful Piano Worship
+                    </button>
+                    <button class="btn" onclick="window.open('https://www.youtube.com/watch?v=nqWFzx0v8LQ', '_blank'); closeModal();">
+                        💆 Soaking Worship Instrumental
+                    </button>
+                    <button class="btn" onclick="window.open('https://www.youtube.com/watch?v=3V3AsbJkIB0', '_blank'); closeModal();">
+                        🕊️ Be Still - 1 Hour Worship
+                    </button>
+                </div>
+                
+                <h3>🎼 Worship Music Playlists</h3>
+                <div style="display: grid; gap: 10px; margin: 20px 0;">
+                    <button class="btn btn-success" onclick="window.open('https://www.youtube.com/playlist?list=PLrSAqd0bNXYy1BQ5LrvQFYeMqxJs7G6DU', '_blank'); closeModal();">
+                        📝 Marriage Prayer Playlist
+                    </button>
+                    <button class="btn btn-success" onclick="window.open('https://www.youtube.com/results?search_query=christian+marriage+restoration+music', '_blank'); closeModal();">
+                        💑 Marriage Restoration Music
+                    </button>
+                    <button class="btn btn-success" onclick="window.open('https://www.youtube.com/results?search_query=healing+worship+instrumental', '_blank'); closeModal();">
+                        💚 Healing Worship Collection
+                    </button>
+                </div>
+                
+                <h3>🎧 Other Free Music Options</h3>
+                <ul style="padding-left: 20px; line-height: 2;">
+                    <li><strong>Spotify Free:</strong> Search "Instrumental Worship"</li>
+                    <li><strong>Pandora:</strong> Create "Worship Music" station</li>
+                    <li><strong>Amazon Music Free:</strong> "Christian Meditation" playlists</li>
+                    <li><strong>SoundCloud:</strong> Search "Christian Instrumental"</li>
+                </ul>
+                
+                <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                    <h4>💡 Pro Tip for Best Experience:</h4>
+                    <ol style="padding-left: 20px; margin-top: 10px;">
+                        <li>Click one of the music buttons above</li>
+                        <li>The music will open in a new tab</li>
+                        <li>Return to this app tab to use the tools</li>
+                        <li>Music will continue playing in background</li>
+                        <li>Adjust volume in the YouTube tab as needed</li>
+                    </ol>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background: white; border-radius: 10px;">
+                    <p style="font-style: italic; text-align: center;">
+                        "Let the word of Christ dwell in you richly... singing psalms and hymns and spiritual songs, with thankfulness in your hearts to God."<br>
+                        - Colossians 3:16
+                    </p>
+                </div>
+                
+                <button class="btn" onclick="closeModal()" style="margin-top: 20px;">Close & Continue</button>
+            `;
+            
+            modal.classList.add('active');
+        }
+
+        // Remove the old embedded player functions
+        function closeMusicPlayer() {
+            // No longer needed - removed embedded player
+        }
+
+        // Save Assessment
+        function saveAssessment() {
+            const assessment = {
+                state: document.getElementById('marriageState').value,
+                struggle: document.getElementById('primaryStruggle').value,
+                length: document.getElementById('marriageLength').value,
+                willingness: document.querySelector('input[name="willingness"]:checked')?.value,
+                date: new Date().toISOString()
+            };
+            localStorage.setItem('marriageAssessment', JSON.stringify(assessment));
+        }
+
+        // Generate Restoration Plan
+        function generatePlan() {
+            const state = document.getElementById('marriageState').value;
+            const struggle = document.getElementById('primaryStruggle').value;
+            const willingness = document.querySelector('input[name="willingness"]:checked')?.value;
+            
+            if (!state || !struggle) {
+                document.getElementById('assessmentResult').innerHTML = '<div class="message warning">Please complete the assessment first.</div>';
+                return;
+            }
+            
+            let plan = '<div class="message success"><h3>Your Personalized Restoration Plan</h3>';
+            
+            // Customize based on state
+            if (state === 'crisis') {
+                plan += '<p><strong>Immediate Priority:</strong> Stabilization and safety. Don\'t make major decisions for 30 days.</p>';
+            } else if (state === 'separated') {
+                plan += '<p><strong>Immediate Priority:</strong> Establish healthy boundaries and communication protocols.</p>';
+            } else if (state === 'rebuilding') {
+                plan += '<p><strong>Immediate Priority:</strong> Consistency and celebrating small wins.</p>';
+            }
+            
+            // Customize based on struggle
+            const struggleMap = {
+                'communication': 'Focus on daily 15-minute connection talks using active listening.',
+                'trust': 'Implement transparency protocols and accountability measures.',
+                'intimacy': 'Start with non-sexual touch and emotional vulnerability exercises.',
+                'conflict': 'Learn "fair fighting" rules and take breaks when heated.',
+                'addiction': 'Address the addiction with professional help first.',
+                'infidelity': 'Full disclosure, no contact with third party, rebuild safety.',
+                'finances': 'Create joint budget and financial transparency plan.',
+                'parenting': 'Agree to discuss parenting privately, present united front.',
+                'spiritual': 'Begin praying together daily, even if just 2 minutes.'
+            };
+            
+            plan += `<p><strong>Primary Focus:</strong> ${struggleMap[struggle] || 'Work with a counselor to address your specific situation.'}</p>`;
+            
+            // Willingness factor
+            if (willingness === 'one') {
+                plan += '<p><strong>Note:</strong> When only one is willing, focus on becoming the spouse God calls you to be, regardless of response. Your obedience to God is not dependent on your spouse\'s choices.</p>';
+            }
+            
+            plan += '<h4>Your 30-Day Action Plan:</h4>';
+            plan += '<ol>';
+            plan += '<li><strong>Week 1:</strong> Crisis stabilization, seek counseling, daily prayer</li>';
+            plan += '<li><strong>Week 2:</strong> Begin communication exercises, read one marriage book together</li>';
+            plan += '<li><strong>Week 3:</strong> Implement one new positive ritual (date night, prayer time, etc.)</li>';
+            plan += '<li><strong>Week 4:</strong> Assess progress, adjust plan, celebrate any improvements</li>';
+            plan += '</ol>';
+            
+            plan += '<p style="margin-top: 15px;"><strong>Remember:</strong> "Commit to the Lord whatever you do, and he will establish your plans." - Proverbs 16:3</p>';
+            plan += '</div>';
+            
+            document.getElementById('assessmentResult').innerHTML = plan;
+            saveAssessment();
+        }
+
+        // 21-Day Challenge
+        function startChallenge() {
+            const challenges = [
+                "Day 1: Pray for your spouse for 5 minutes",
+                "Day 2: Write 3 things you appreciate about your spouse",
+                "Day 3: Do one act of service without being asked",
+                "Day 4: Have a 10-minute conversation with no phones",
+                "Day 5: Share one positive memory from your past",
+                "Day 6: Apologize for one specific hurt you've caused",
+                "Day 7: Attend church or worship together",
+                "Day 8: Give a 20-second hug",
+                "Day 9: Compliment your spouse in front of others",
+                "Day 10: Plan something your spouse enjoys",
+                "Day 11: Share your feelings using 'I' statements",
+                "Day 12: Pray together for 2 minutes",
+                "Day 13: Write a love note and hide it",
+                "Day 14: Have a meal with no distractions",
+                "Day 15: Ask 'How can I love you better?'",
+                "Day 16: Share what first attracted you to them",
+                "Day 17: Do their least favorite chore",
+                "Day 18: Plan a surprise date",
+                "Day 19: Read Scripture together",
+                "Day 20: Express gratitude for growth you've seen",
+                "Day 21: Renew one marriage vow"
+            ];
+            
+            const startDate = localStorage.getItem('challengeStartDate');
+            const today = new Date().toDateString();
+            
+            if (!startDate) {
+                localStorage.setItem('challengeStartDate', today);
+                localStorage.setItem('challengeDay', '1');
+            }
+            
+            const day = parseInt(localStorage.getItem('challengeDay') || '1');
+            const progress = Math.min(100, (day / 21) * 100);
+            
+            document.getElementById('challengeProgress').style.width = progress + '%';
+            document.getElementById('challengeProgress').textContent = Math.round(progress) + '%';
+            
+            if (day <= 21) {
+                document.getElementById('dailyChallenge').innerHTML = `
+                    <div class="message warning">
+                        <h4>${challenges[day - 1]}</h4>
+                        <button class="btn btn-success" onclick="completeDay()" style="margin-top: 10px;">Mark Complete</button>
+                    </div>
+                `;
+            } else {
+                document.getElementById('dailyChallenge').innerHTML = `
+                    <div class="message success">
+                        <h4>🎉 Congratulations! You've completed the 21-Day Challenge!</h4>
+                        <p>Continue these practices to maintain momentum in your marriage restoration.</p>
+                        <button class="btn" onclick="restartChallenge()" style="margin-top: 10px;">Start Again</button>
+                    </div>
+                `;
+            }
+        }
+
+        function completeDay() {
+            const day = parseInt(localStorage.getItem('challengeDay') || '1');
+            localStorage.setItem('challengeDay', (day + 1).toString());
+            startChallenge();
+        }
+
+        function restartChallenge() {
+            localStorage.removeItem('challengeStartDate');
+            localStorage.removeItem('challengeDay');
+            startChallenge();
+        }
+
+        // Prayer Wall
+        function submitPrayer() {
+            const prayerText = document.getElementById('prayerRequest').value.trim();
+            if (!prayerText) return;
+            
+            const prayers = JSON.parse(localStorage.getItem('marriagePrayers') || '[]');
+            const prayer = {
+                text: prayerText,
+                date: new Date().toISOString(),
+                id: Date.now()
+            };
+            
+            prayers.unshift(prayer);
+            if (prayers.length > 10) prayers.pop();
+            
+            localStorage.setItem('marriagePrayers', JSON.stringify(prayers));
+            document.getElementById('prayerRequest').value = '';
+            loadPrayers();
+        }
+
+        function loadPrayers() {
+            const prayers = JSON.parse(localStorage.getItem('marriagePrayers') || '[]');
+            const prayerList = document.getElementById('prayerList');
+            if (!prayerList) return;
+            
+            if (prayers.length === 0) {
+                prayerList.innerHTML = '<p style="text-align: center; opacity: 0.7;">No prayer requests yet. Be the first to share.</p>';
+                return;
+            }
+            
+            prayerList.innerHTML = prayers.map(prayer => `
+                <div class="prayer-item">
+                    <div class="date">${new Date(prayer.date).toLocaleDateString()}</div>
+                    <p>${prayer.text}</p>
+                </div>
+            `).join('');
+        }
+
+        // Journey Tracker
+        function updateJourney() {
+            const stage = document.getElementById('journeyStage').value;
+            localStorage.setItem('currentJourneyStage', stage);
+        }
+
+        function saveJournal() {
+            const entry = {
+                stage: document.getElementById('journeyStage').value,
+                journal: document.getElementById('journeyJournal').value,
+                action: document.getElementById('weeklyAction').value,
+                date: new Date().toISOString()
+            };
+            
+            const history = JSON.parse(localStorage.getItem('journeyHistory') || '[]');
+            history.unshift(entry);
+            if (history.length > 20) history.pop();
+            
+            localStorage.setItem('journeyHistory', JSON.stringify(history));
+            loadJourneyHistory();
+            
+            // Show confirmation
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Saved!';
+            btn.classList.add('btn-success');
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('btn-success');
+            }, 2000);
+        }
+
+        function loadJourneyHistory() {
+            const history = JSON.parse(localStorage.getItem('journeyHistory') || '[]');
+            const historyDiv = document.getElementById('journeyHistory');
+            if (!historyDiv) return;
+            
+            if (history.length === 0) return;
+            
+            historyDiv.innerHTML = '<h3 style="margin-top: 30px;">Your Journey History</h3>' +
+                history.slice(0, 5).map(entry => `
+                    <div class="prayer-item">
+                        <div class="date">${new Date(entry.date).toLocaleDateString()}</div>
+                        <p><strong>Stage:</strong> ${entry.stage ? 'Stage ' + entry.stage : 'Not specified'}</p>
+                        ${entry.journal ? `<p>${entry.journal}</p>` : ''}
+                        ${entry.action ? `<p><strong>Action:</strong> ${entry.action}</p>` : ''}
+                    </div>
+                `).join('');
+        }
+
+        // Tool Modal
+        function openTool(toolType) {
+            const modal = document.getElementById('toolModal');
+            const content = document.getElementById('modalContent');
+            
+            const tools = {
+                communication: {
+                    title: '💬 Communication Restoration Workshop',
+                    content: `
+                        <h3>Rebuilding Communication in Your Marriage</h3>
+                        <p>Communication is the lifeline of marriage. When it breaks down, everything else suffers.</p>
+                        
+                        <h4>The 5-to-1 Rule</h4>
+                        <p>Research shows healthy marriages have 5 positive interactions for every 1 negative. Start counting yours today.</p>
+                        
+                        <h4>Daily Connection Ritual (15 minutes)</h4>
+                        <ol>
+                            <li><strong>Arrival ritual (2 min):</strong> Six-second kiss and 20-second hug</li>
+                            <li><strong>Stress-reducing conversation (10 min):</strong> Talk about your day, just listen, don't solve</li>
+                            <li><strong>Appreciation (3 min):</strong> Share one thing you appreciated about your spouse today</li>
+                        </ol>
+                        
+                        <h4>Active Listening Exercise</h4>
+                        <p><strong>Speaker:</strong> Share for 2 minutes uninterrupted<br>
+                        <strong>Listener:</strong> Summarize what you heard<br>
+                        <strong>Speaker:</strong> Confirm or correct<br>
+                        <strong>Switch roles</strong></p>
+                        
+                        <h4>Conflict Resolution Script</h4>
+                        <p>"I feel [emotion] when [specific behavior] because [impact on me]. I need [specific request]."</p>
+                        
+                        <h4>Scripture Foundation</h4>
+                        <p>"Let every person be quick to hear, slow to speak, slow to anger" - James 1:19</p>
+                    `
+                },
+                trust: {
+                    title: '🔐 Trust Rebuilding Program',
+                    content: `
+                        <h3>Rebuilding Trust After Betrayal</h3>
+                        <p>Trust is earned in drops and lost in buckets. Rebuilding requires patience, consistency, and grace.</p>
+                        
+                        <h4>For the One Who Broke Trust:</h4>
+                        <ul>
+                            <li>Full disclosure - no trickle truth</li>
+                            <li>Complete transparency - passwords, schedules, finances</li>
+                            <li>Cut all contact with affair partner/temptation source</li>
+                            <li>Answer all questions honestly, even when it hurts</li>
+                            <li>Show empathy for the pain you've caused</li>
+                            <li>Be patient with the healing timeline</li>
+                            <li>Seek individual counseling for your issues</li>
+                        </ul>
+                        
+                        <h4>For the One Who Was Betrayed:</h4>
+                        <ul>
+                            <li>Take time to process before making decisions</li>
+                            <li>Set clear boundaries for reconciliation</li>
+                            <li>Ask for what you need to feel safe</li>
+                            <li>Work on forgiveness at your own pace</li>
+                            <li>Don't use the betrayal as a weapon</li>
+                            <li>Celebrate small progress</li>
+                            <li>Get support for your trauma</li>
+                        </ul>
+                        
+                        <h4>Trust-Building Actions:</h4>
+                        <ol>
+                            <li>Daily check-ins about feelings and triggers</li>
+                            <li>Weekly accountability meetings</li>
+                            <li>Consistent follow-through on all promises</li>
+                            <li>Proactive communication about schedules</li>
+                            <li>Professional counseling together and separately</li>
+                        </ol>
+                        
+                        <h4>Scripture Foundation</h4>
+                        <p>"Whoever walks in integrity walks securely, but whoever takes crooked paths will be found out." - Proverbs 10:9</p>
+                    `
+                },
+                intimacy: {
+                    title: '❤️ Intimacy Recovery Guide',
+                    content: `
+                        <h3>Rebuilding Intimacy on All Levels</h3>
+                        <p>True intimacy involves emotional, spiritual, and physical connection. All three must be nurtured.</p>
+                        
+                        <h4>Emotional Intimacy Building:</h4>
+                        <ul>
+                            <li>Share one fear and one hope daily</li>
+                            <li>Practice vulnerability with small disclosures</li>
+                            <li>Create a feelings vocabulary together</li>
+                            <li>Hold eye contact for 2 minutes (try it!)</li>
+                            <li>Ask open-ended questions about dreams</li>
+                        </ul>
+                        
+                        <h4>Spiritual Intimacy Exercises:</h4>
+                        <ul>
+                            <li>Pray together for 2 minutes daily</li>
+                            <li>Share what God is teaching you</li>
+                            <li>Read a devotional together</li>
+                            <li>Serve others as a couple</li>
+                            <li>Worship together privately</li>
+                        </ul>
+                        
+                        <h4>Physical Intimacy Restoration:</h4>
+                        <p><strong>Start with non-sexual touch:</strong></p>
+                        <ul>
+                            <li>Hold hands during prayer</li>
+                            <li>6-second kisses (builds connection)</li>
+                            <li>20-second hugs (releases oxytocin)</li>
+                            <li>Foot rubs or back scratches</li>
+                            <li>Dance in the kitchen</li>
+                        </ul>
+                        
+                        <p><strong>When ready for sexual intimacy:</strong></p>
+                        <ul>
+                            <li>Communicate desires and boundaries</li>
+                            <li>Go slow and rebuild safety</li>
+                            <li>Focus on giving, not getting</li>
+                            <li>Address any trauma with professional help</li>
+                        </ul>
+                        
+                        <h4>Scripture Foundation</h4>
+                        <p>"Let marriage be held in honor among all, and let the marriage bed be undefiled" - Hebrews 13:4</p>
+                    `
+                },
+                infidelity: {
+                    title: '💔 After the Affair Recovery',
+                    content: `
+                        <h3>Healing After Infidelity</h3>
+                        <p>Affair recovery is possible, but it's a 2-5 year journey requiring commitment from both partners.</p>
+                        
+                        <h4>Phase 1: Crisis Management (0-3 months)</h4>
+                        <ul>
+                            <li>Ensure safety (STD testing, pregnancy concerns)</li>
+                            <li>Decide on immediate living arrangements</li>
+                            <li>Cut ALL contact with affair partner</li>
+                            <li>Full disclosure session with counselor</li>
+                            <li>Establish boundaries and expectations</li>
+                        </ul>
+                        
+                        <h4>Phase 2: Understanding (3-12 months)</h4>
+                        <ul>
+                            <li>Explore why the affair happened</li>
+                            <li>Address underlying issues in marriage</li>
+                            <li>Individual counseling for both partners</li>
+                            <li>Process trauma and grief</li>
+                            <li>Begin rebuilding practices</li>
+                        </ul>
+                        
+                        <h4>Phase 3: Rebuilding (1-2 years)</h4>
+                        <ul>
+                            <li>Create new relationship vision</li>
+                            <li>Establish new patterns and rituals</li>
+                            <li>Rebuild physical intimacy slowly</li>
+                            <li>Address triggers as they arise</li>
+                            <li>Celebrate milestones</li>
+                        </ul>
+                        
+                        <h4>Phase 4: New Marriage (2+ years)</h4>
+                        <ul>
+                            <li>Integration of the experience</li>
+                            <li>Post-traumatic growth</li>
+                            <li>Helping others in crisis</li>
+                            <li>Continued maintenance work</li>
+                        </ul>
+                        
+                        <h4>Scripture Foundation</h4>
+                        <p>"If we confess our sins, he is faithful and just to forgive us our sins and to cleanse us from all unrighteousness." - 1 John 1:9</p>
+                    `
+                },
+                prayer: {
+                    title: '🙏 Spiritual Warfare for Marriage',
+                    content: `
+                        <h3>Fighting for Your Marriage in Prayer</h3>
+                        <p>Your marriage has an enemy, and it's not your spouse. Fight the real battle in prayer.</p>
+                        
+                        <h4>Daily Warfare Prayer</h4>
+                        <p style="font-style: italic;">
+                        "Father God, I come before You in the mighty name of Jesus. I plead the blood of Jesus over my marriage, my spouse, and our home. I bind every spirit of division, strife, and destruction trying to attack our covenant. I loose the Spirit of unity, love, and restoration. I declare that no weapon formed against our marriage shall prosper. I ask for supernatural wisdom, patience, and love. Soften our hearts toward each other. Help us see each other through Your eyes. In Jesus' name, Amen."
+                        </p>
+                        
+                        <h4>Scripture Declarations</h4>
+                        <ul>
+                            <li>"What God has joined together, let no one separate" (Mark 10:9)</li>
+                            <li>"Love never fails" (1 Corinthians 13:8)</li>
+                            <li>"Two are better than one" (Ecclesiastes 4:9)</li>
+                            <li>"Be kind and compassionate, forgiving each other" (Ephesians 4:32)</li>
+                            <li>"Above all, love each other deeply" (1 Peter 4:8)</li>
+                        </ul>
+                        
+                        <h4>21-Day Prayer and Fasting Guide</h4>
+                        <p><strong>Week 1:</strong> Fast one meal daily, pray for softened hearts<br>
+                        <strong>Week 2:</strong> Fast two meals daily, pray for wisdom and direction<br>
+                        <strong>Week 3:</strong> Fast as led, pray for breakthrough and restoration</p>
+                        
+                        <h4>Couple Prayer Format</h4>
+                        <ol>
+                            <li>Hold hands and center yourselves</li>
+                            <li>Each share one gratitude</li>
+                            <li>Pray for your marriage together</li>
+                            <li>Pray for each other individually</li>
+                            <li>Close with the Lord's Prayer</li>
+                        </ol>
+                    `
+                },
+                separation: {
+                    title: '🌉 Therapeutic Separation Guidelines',
+                    content: `
+                        <h3>When Space Can Lead to Healing</h3>
+                        <p>Sometimes strategic separation can save a marriage, but it must be done with intention and boundaries.</p>
+                        
+                        <h4>Is Therapeutic Separation Right for You?</h4>
+                        <p><strong>Good reasons:</strong></p>
+                        <ul>
+                            <li>Safety concerns (physical or emotional)</li>
+                            <li>Active addiction needing treatment</li>
+                            <li>Intense counseling work needed individually</li>
+                            <li>Breaking destructive patterns</li>
+                        </ul>
+                        
+                        <p><strong>Poor reasons:</strong></p>
+                        <ul>
+                            <li>Punishment for spouse</li>
+                            <li>Testing single life</li>
+                            <li>Avoiding difficult conversations</li>
+                            <li>Pursuing another relationship</li>
+                        </ul>
+                        
+                        <h4>Separation Agreement Guidelines</h4>
+                        <ol>
+                            <li><strong>Duration:</strong> Set specific timeframe (30-90 days initially)</li>
+                            <li><strong>Goals:</strong> Define what each will work on</li>
+                            <li><strong>Contact:</strong> Specify frequency and type</li>
+                            <li><strong>Finances:</strong> Agree on bill payments and access</li>
+                            <li><strong>Children:</strong> Detailed parenting plan</li>
+                            <li><strong>Dating:</strong> Agreement on exclusivity</li>
+                            <li><strong>Counseling:</strong> Individual and couple requirements</li>
+                            <li><strong>Review date:</strong> When to assess progress</li>
+                        </ol>
+                        
+                        <h4>During Separation - Individual Work</h4>
+                        <ul>
+                            <li>Focus on personal growth and healing</li>
+                            <li>Address your contributions to problems</li>
+                            <li>Develop healthy coping strategies</li>
+                            <li>Strengthen relationship with God</li>
+                            <li>Prepare for reconciliation work</li>
+                        </ul>
+                        
+                        <h4>Scripture Foundation</h4>
+                        <p>"To the married I give this charge (not I, but the Lord): the wife should not separate from her husband (but if she does, she should remain unmarried or else be reconciled to her husband)" - 1 Corinthians 7:10-11</p>
+                    `
+                }
+            };
+            
+            const tool = tools[toolType];
+            if (tool) {
+                content.innerHTML = `<h2>${tool.title}</h2>${tool.content}`;
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('toolModal').classList.remove('active');
+        }
+
+        // Load saved data
+        function loadSavedData() {
+            const assessment = JSON.parse(localStorage.getItem('marriageAssessment') || '{}');
+            if (assessment.state) {
+                document.getElementById('marriageState').value = assessment.state;
+                document.getElementById('primaryStruggle').value = assessment.struggle;
+                document.getElementById('marriageLength').value = assessment.length || '';
+                if (assessment.willingness) {
+                    const radio = document.querySelector(`input[name="willingness"][value="${assessment.willingness}"]`);
+                    if (radio) radio.checked = true;
+                }
+            }
+            
+            const journeyStage = localStorage.getItem('currentJourneyStage');
+            if (journeyStage) {
+                document.getElementById('journeyStage').value = journeyStage;
+            }
+        }
+
+        // Update date/time
+        function updateDateTime() {
+            const now = new Date();
+            const dateString = now.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            // You can display this somewhere if needed
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('toolModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
